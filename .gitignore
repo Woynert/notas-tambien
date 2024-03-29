@@ -1,0 +1,9 @@
+.godot/
+
+*.zip
+
+*.blend1
+
+resources/sfx/rawrecords/
+
+export

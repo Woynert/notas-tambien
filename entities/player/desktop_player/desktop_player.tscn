@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://brsx4rbkykgxc"]
+
+[ext_resource type="Script" path="res://entities/player/desktop_player/desktop_player.gd" id="1_2fqgx"]
+
+[node name="DesktopPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fqgx")
+show_sleep = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="BtnPlay" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jugar"
+
+[node name="Sep1" type="Control" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnStudy" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Estudiar"
+
+[node name="Sep2" type="Control" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnSleep" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dormir"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqo4ugnw0566a"]
+
+[ext_resource type="PackedScene" uid="uid://2y227yvrc1du" path="res://resources/models/bus-stop-house-entrance.blend" id="1_lugag"]
+
+[sub_resource type="Environment" id="Environment_fg4du"]
+background_mode = 1
+background_color = Color(0.054902, 0.0705882, 0.105882, 1)
+background_energy_multiplier = 2.15
+ambient_light_source = 2
+ambient_light_color = Color(0.74902, 0.905882, 1, 1)
+ambient_light_energy = 0.42
+adjustment_brightness = 6.75
+adjustment_contrast = 1.69
+
+[node name="LevelEntrance" type="Node3D"]
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="bus-stop-house-entrance" parent="model" instance=ExtResource("1_lugag")]
+
+[node name="ambient" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2954, 5.33157, -31.7253)
+light_color = Color(0.745098, 0.847059, 1, 1)
+light_energy = 0.077
+light_specular = 10.185
+shadow_enabled = true
+omni_range = 19.7524
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambient"]
+environment = SubResource("Environment_fg4du")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 0.740711, 0.671824, 0, -0.671824, 0.740711, 0, 20.6541, 0)
+light_color = Color(0.843137, 0.439216, 1, 1)
+light_energy = 0.234
+
+[node name="entities" type="Node3D" parent="."]

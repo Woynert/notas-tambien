@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq0ew6mnh2l8m"]
+
+[ext_resource type="PackedScene" uid="uid://cjd4bel563n4r" path="res://resources/models/class.blend" id="1_xea1j"]
+
+[sub_resource type="Environment" id="Environment_mr0xw"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.54
+adjustment_brightness = 6.75
+adjustment_contrast = 1.69
+
+[node name="LevelClass" type="Node3D"]
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="class" parent="model" instance=ExtResource("1_xea1j")]
+
+[node name="room2" parent="model/class" index="1"]
+visible = false
+
+[node name="ambient" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58431, 8.54497, 3.49555)
+light_energy = 0.194
+light_indirect_energy = 1.584
+light_specular = 11.245
+shadow_enabled = true
+omni_range = 12.443
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37554, 8.2279, -2.88851)
+light_energy = 1.362
+light_indirect_energy = 1.584
+light_specular = 11.245
+omni_range = 12.443
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambient"]
+environment = SubResource("Environment_mr0xw")
+
+[node name="Camera3D" type="Camera3D" parent="ambient"]
+transform = Transform3D(0.698415, 0.335997, -0.631919, 0, 0.882948, 0.469472, 0.715693, -0.327886, 0.616664, -7.463, 8.19, 6.9)
+
+[editable path="model/class"]

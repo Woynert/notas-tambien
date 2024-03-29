@@ -1,0 +1,675 @@
+[gd_scene load_steps=14 format=3 uid="uid://bgl7k47ijlgqk"]
+
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_weje0"]
+[ext_resource type="PackedScene" uid="uid://bq0ew6mnh2l8m" path="res://maps/map_class.tscn" id="2_1dm2a"]
+[ext_resource type="AudioStream" uid="uid://cogookt248s7k" path="res://resources/sfx/voices/teacher.ogg" id="3_rlwc0"]
+[ext_resource type="AudioStream" uid="uid://b1vlm0d0lhwi6" path="res://resources/sfx/voices/st.ogg" id="4_s1o8l"]
+[ext_resource type="AudioStream" uid="uid://f7414hqa88hk" path="res://resources/sfx/misc/clock.ogg" id="4_sfhkm"]
+[ext_resource type="AudioStream" uid="uid://b8gwhjkumpbfp" path="res://resources/sfx/voices/st-2.ogg" id="5_23pfv"]
+[ext_resource type="PackedScene" uid="uid://bp4gstuwwwgj0" path="res://entities/person/person.tscn" id="5_t5w3a"]
+[ext_resource type="Script" path="res://stages/substage_animation_player.gd" id="6_3jfl4"]
+[ext_resource type="PackedScene" uid="uid://flo5ua1e6lfk" path="res://resources/models/items.blend" id="8_ci2gf"]
+[ext_resource type="Script" path="res://entities/items.gd" id="9_uecat"]
+
+[sub_resource type="Animation" id="Animation_e5hw0"]
+resource_name = "main"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../aniShared/PlayerMainVoice")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_sfhkm")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_rlwc0")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_s1o8l")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_23pfv")
+}],
+"times": PackedFloat32Array(0, 4.4, 11, 13.5)
+}
+tracks/0/use_blend = true
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 4.94173, -6.43086, 0.8, 1, 0, 4.94173, -6.43086, 1, 1, 0, 4.94173, -6.43086, 2.3, 1, 0, 4.94173, -4.19808, 13.5, 1, 0, 4.94173, -4.19808, 14.8, 1, 0, 4.94173, -5.50691)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 2.3, 1, 0, 0, 0, 1, 13.5, 1, 0, 0, 0, 1)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(3.2, 1, -0.515023, 1.70405, -3.87295, 9.9, 1, 1.15829, 2.478, -1.62871, 16.7, 1, -0.515023, 1.70405, -3.87295)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(3.2, 1, 0, 0.0954809, 0, 0.995431, 9.9, 1, -0.0932011, 0.860825, 0.170588, 0.470312, 16.7, 1, 0, 0.0954809, 0, 0.995431)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../aniShared/AniCameraSmooth:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.2, 13.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../aniShared/AniCameraAbsolute:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("teacher/LocalAnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("idle-breath", "teacher-explaining", "idle-breath"),
+"times": PackedFloat32Array(-0.1, 4.4, 10)
+}
+tracks/8/type = "animation"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("student/LocalAnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": PackedStringArray("idle-sit-1", "student-surprise"),
+"times": PackedFloat32Array(0, 10.3)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BoneAttachment3D:visible")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 4.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0s7gt"]
+_data = {
+"main": SubResource("Animation_e5hw0")
+}
+
+[sub_resource type="TorusMesh" id="TorusMesh_5acvu"]
+
+[node name="Stage1" type="Node3D"]
+script = ExtResource("1_weje0")
+substage_list = Array[bool]([false])
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="LevelClass" parent="map" instance=ExtResource("2_1dm2a")]
+
+[node name="Person" parent="map" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.41395, 0, 0.399252)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="map/Person/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526341)
+bones/1/rotation = Quaternion(0.0608986, 0.46241, 0.879969, -0.09013)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.659708, 0.262529, -0.684193, -0.166561)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.0422816, 0.28315, 0.952887, 0.100221)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+
+[node name="face-eyes-closed_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 1.17018, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 1.17018, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 1.17018, 0.0434664)
+
+[node name="face-mouth-open_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-sad" parent="map/Person/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 1.17018, -0.0837547)
+
+[node name="head_2" parent="map/Person/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 1.17018, 0.0434665)
+
+[node name="LeftHand" parent="map/Person" index="2"]
+transform = Transform3D(-0.984346, -0.0417389, 0.171234, -0.0237318, 0.994094, 0.105891, -0.174643, 0.100169, -0.979523, 0.360049, 1.41046, 0.6345)
+
+[node name="item" parent="map/Person/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="map/Person/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="map/Person" index="3"]
+transform = Transform3D(-0.984346, 0.0417382, -0.171235, 0.0247534, 0.994664, 0.100152, 0.174501, 0.0943458, -0.980127, -0.360049, 1.38515, 0.46596)
+
+[node name="Person2" parent="map" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.38138, 0, 4.40592)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="map/Person2/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526341)
+bones/1/rotation = Quaternion(0.0608986, 0.46241, 0.879969, -0.09013)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.659708, 0.262529, -0.684193, -0.166561)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.0422816, 0.28315, 0.952887, 0.100221)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+
+[node name="face-eyes-closed_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 1.17018, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 1.17018, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 1.17018, 0.0434664)
+
+[node name="face-mouth-open_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-sad" parent="map/Person2/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 1.17018, -0.0837547)
+
+[node name="head_2" parent="map/Person2/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 1.17018, 0.0434665)
+
+[node name="LeftHand" parent="map/Person2" index="2"]
+transform = Transform3D(-0.984346, -0.0417389, 0.171234, -0.0237318, 0.994094, 0.105891, -0.174643, 0.100169, -0.979523, 0.360049, 1.41046, 0.634501)
+
+[node name="item" parent="map/Person2/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="map/Person2/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="map/Person2" index="3"]
+transform = Transform3D(-0.984346, 0.0417382, -0.171235, 0.0247534, 0.994664, 0.100152, 0.174501, 0.0943458, -0.980127, -0.360049, 1.38515, 0.46596)
+
+[node name="Person5" parent="map" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.529575, 0, 4.40592)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="map/Person5/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/0/rotation = Quaternion(0, 2.39835e-08, -0.178503, 0.983939)
+bones/1/position = Vector3(0.29275, 0.295475, 0.0689546)
+bones/1/rotation = Quaternion(0.0553275, 0.483408, 0.869531, -0.0846801)
+bones/1/scale = Vector3(1.16364, 1.16364, 1.16364)
+bones/2/rotation = Quaternion(0.877819, -0.0343415, -0.277917, 0.388609)
+bones/2/scale = Vector3(1.13302, 1.13302, 1.13302)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/4/scale = Vector3(0.758479, 0.758479, 0.758479)
+bones/5/position = Vector3(-0.00243696, 0.372543, 0.118338)
+bones/5/rotation = Quaternion(6.63281e-09, -0.164234, -7.03107e-10, 0.986421)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519516, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.605786, 0.370352, -0.702509, -0.0484107)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.287508, 0.195191, 0.0493765)
+bones/23/rotation = Quaternion(-0.0626696, 0.274953, 0.958796, 0.0344115)
+bones/24/rotation = Quaternion(0.370506, 0.100568, -0.0624117, 0.921258)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.0491119, 0.0441959, -0.062361, 0.995864)
+
+[node name="face-eyes-closed_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.266847, 1.11479, 0.0135185)
+
+[node name="face-eyes-normal_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.2309, 1.12827, 0.125622)
+
+[node name="face-eyes-ojera_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.266847, 1.11479, 0.0135185)
+
+[node name="face-mouth-closed_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.269494, 1.11379, 0.00526437)
+
+[node name="face-mouth-happy_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.2309, 1.12827, 0.125622)
+
+[node name="face-mouth-open_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.269493, 1.11379, 0.00526416)
+
+[node name="face-mouth-sad" parent="map/Person5/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, -3.63307e-08, 0.946054, 0.269497, 1.11379, 0.00526559)
+
+[node name="head_2" parent="map/Person5/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(0.885765, 0.351272, -0.30336, -0.332323, 0.936273, 0.113815, 0.324008, 4.75418e-09, 0.946054, 0.2309, 1.12827, 0.125622)
+
+[node name="LeftHand" parent="map/Person5" index="2"]
+transform = Transform3D(-0.929953, 0.310117, 0.197518, -0.267172, -0.200897, -0.942474, -0.252597, -0.929229, 0.26968, 0.283653, 1.80975, 0.399661)
+
+[node name="item" parent="map/Person5/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="map/Person5/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="map/Person5" index="3"]
+transform = Transform3D(-0.897617, 0.139988, 0.417955, 0.249684, 0.942907, 0.220418, -0.363237, 0.302208, -0.881322, -0.417737, 1.40154, 0.576727)
+
+[node name="Person3" parent="map" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.42306, 0, 0.399252)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="map/Person3/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526341)
+bones/1/rotation = Quaternion(0.0608986, 0.46241, 0.879969, -0.09013)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, -0.144738)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, 0.0119367)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.659708, 0.262529, -0.684193, -0.166561)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.0422816, 0.28315, 0.952887, 0.100221)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+
+[node name="face-eyes-closed_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 1.17018, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 1.17018, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 1.17018, -0.101272)
+
+[node name="face-mouth-open_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-sad" parent="map/Person3/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 1.17018, 0.055403)
+
+[node name="head_2" parent="map/Person3/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 1.17018, 0.0434665)
+
+[node name="LeftHand" parent="map/Person3" index="2"]
+transform = Transform3D(-0.984346, -0.0417389, 0.171234, -0.0237318, 0.994094, 0.105891, -0.174643, 0.100169, -0.979523, 0.360049, 1.41046, 0.6345)
+
+[node name="item" parent="map/Person3/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="map/Person3/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="map/Person3" index="3"]
+transform = Transform3D(-0.984346, 0.0417382, -0.171235, 0.0247534, 0.994664, 0.100152, 0.174501, 0.0943458, -0.980127, -0.360049, 1.38515, 0.46596)
+
+[node name="Person4" parent="map" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.45563, 0, 4.40592)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="map/Person4/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526341)
+bones/1/rotation = Quaternion(0.0608986, 0.46241, 0.879969, -0.09013)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, -0.144738)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, 0.0119367)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.659708, 0.262529, -0.684193, -0.166561)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.0422816, 0.28315, 0.952887, 0.100221)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+
+[node name="face-eyes-closed_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 1.17018, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 1.17018, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 1.17018, -0.101272)
+
+[node name="face-mouth-open_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-sad" parent="map/Person4/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 1.17018, 0.055403)
+
+[node name="head_2" parent="map/Person4/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 1.17018, 0.0434665)
+
+[node name="LeftHand" parent="map/Person4" index="2"]
+transform = Transform3D(-0.984346, -0.0417389, 0.171234, -0.0237318, 0.994094, 0.105891, -0.174643, 0.100169, -0.979523, 0.36005, 1.41046, 0.6345)
+
+[node name="item" parent="map/Person4/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="map/Person4/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="map/Person4" index="3"]
+transform = Transform3D(-0.984346, 0.0417382, -0.171235, 0.0247534, 0.994664, 0.100152, 0.174501, 0.0943458, -0.980127, -0.360049, 1.38515, 0.46596)
+
+[node name="aniShared" type="Node3D" parent="."]
+
+[node name="PlayerMainVoice" type="AudioStreamPlayer" parent="aniShared"]
+
+[node name="AniCameraSmooth" type="Camera3D" parent="aniShared"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94173, -0.741575)
+
+[node name="AniCameraAbsolute" type="Camera3D" parent="aniShared"]
+transform = Transform3D(0.981767, 0, 0.190089, 0, 1, 0, -0.190089, 0, 0.981767, -0.515023, 1.70405, -3.87295)
+current = true
+
+[node name="substages" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="substages"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="substages/0"]
+libraries = {
+"": SubResource("AnimationLibrary_0s7gt")
+}
+script = ExtResource("6_3jfl4")
+substage_index = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.71375, 1.50503, -7.07084)
+visible = false
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.57392, 1.50503, 0.628399)
+visible = false
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="teacher" parent="substages/0" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(0.849175, 0, 0.528112, 0, 1, 0, -0.528112, 0, 0.849175, -2.08232, 0, -6.44505)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="substages/0/teacher/model/character/char-armature" index="0"]
+bones/1/position = Vector3(0.332119, 0.263708, -0.0603208)
+bones/1/rotation = Quaternion(0.0458583, 0.0106333, 0.988543, -0.14341)
+bones/2/rotation = Quaternion(0.244654, -0.0161062, -0.0513594, 0.968115)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00680511, -0.0266925, -0.0827592, 0.996189)
+bones/4/position = Vector3(0.0606527, 0.0581514, -0.0362332)
+bones/4/rotation = Quaternion(-0.0782572, -0.0163336, -0.682802, 0.726216)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, -0.116002)
+bones/16/position = Vector3(0.814934, 0.519517, 0.00853074)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.673838, 0.214341, -0.673838, -0.214341)
+bones/22/rotation = Quaternion(-4.1609e-08, -9.55231e-08, 0.192118, 0.981372)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.00720407, -0.0438341, 0.9931, 0.108536)
+bones/24/rotation = Quaternion(0.245352, 0.01113, 0.0500807, 0.968076)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+
+[node name="face-eyes-closed_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.671383, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 0.671383, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 0.671383, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 0.671383, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 0.671383, -0.0725357)
+
+[node name="face-mouth-open_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.671383, 0.051997)
+
+[node name="face-mouth-sad" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 0.671383, -0.0837547)
+
+[node name="head_2" parent="substages/0/teacher/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 0.671383, 0.0434665)
+
+[node name="LeftHand" parent="substages/0/teacher" index="2"]
+transform = Transform3D(-0.0994552, -0.994578, -0.0303987, 0.914435, -0.103401, 0.391301, -0.392322, 0.0111193, 0.91976, 0.427534, 0.631275, 0.0893402)
+
+[node name="item" parent="substages/0/teacher/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="substages/0/teacher/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="substages/0/teacher" index="3"]
+transform = Transform3D(-0.984346, 0.0417384, -0.171235, -0.140311, 0.402379, 0.904657, 0.10666, 0.914521, -0.390224, -0.360049, 0.60447, 0.0238476)
+
+[node name="student" parent="substages/0" instance=ExtResource("5_t5w3a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.514567, 0, 0.391321)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="substages/0/student/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.498797, 0)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526341)
+bones/1/rotation = Quaternion(0.0608986, 0.46241, 0.879969, -0.09013)
+bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
+bones/5/position = Vector3(-1.98545e-17, 0.373457, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.659708, 0.262529, -0.684193, -0.166561)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.332119, 0.263708, -0.0603208)
+bones/23/rotation = Quaternion(-0.0422816, 0.28315, 0.952887, 0.100221)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+
+[node name="face-eyes-closed_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 1.17018, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 1.17018, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 1.17018, 0.0434664)
+
+[node name="face-mouth-open_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 1.17018, -0.0837547)
+
+[node name="face-mouth-sad" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 1.17018, -0.0837547)
+
+[node name="head_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 1.17018, 0.0434665)
+
+[node name="LeftHand" parent="substages/0/student" index="2"]
+transform = Transform3D(-0.984346, -0.0417389, 0.171234, -0.0237318, 0.994095, 0.105891, -0.174643, 0.100169, -0.979523, 0.360049, 1.41046, 0.634501)
+
+[node name="item" parent="substages/0/student/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ruler" parent="substages/0/student/LeftHand/item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RightHand" parent="substages/0/student" index="3"]
+transform = Transform3D(-0.984346, 0.0417381, -0.171235, 0.0247534, 0.994664, 0.100152, 0.174501, 0.0943458, -0.980127, -0.360049, 1.38515, 0.46596)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="substages/0"]
+transform = Transform3D(-0.291645, -0.838698, 0.459923, 0.914435, -0.103401, 0.391301, -0.280627, 0.534691, 0.797092, -1.67209, 0.631275, -6.59497)
+bone_name = "item.L"
+bone_idx = 4
+use_external_skeleton = true
+external_skeleton = NodePath("../teacher/model/character/char-armature/Skeleton3D")
+
+[node name="items" parent="substages/0/BoneAttachment3D" instance=ExtResource("8_ci2gf")]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, -1, -1.49012e-08, 1, -2.98023e-08, 0, 0, 0)
+script = ExtResource("9_uecat")
+item = 1
+
+[editable path="map/Person"]
+[editable path="map/Person/model/character"]
+[editable path="map/Person/LeftHand/item"]
+[editable path="map/Person2"]
+[editable path="map/Person2/model/character"]
+[editable path="map/Person2/LeftHand/item"]
+[editable path="map/Person5"]
+[editable path="map/Person5/model/character"]
+[editable path="map/Person5/LeftHand/item"]
+[editable path="map/Person3"]
+[editable path="map/Person3/model/character"]
+[editable path="map/Person3/LeftHand/item"]
+[editable path="map/Person4"]
+[editable path="map/Person4/model/character"]
+[editable path="map/Person4/LeftHand/item"]
+[editable path="substages/0/teacher"]
+[editable path="substages/0/teacher/model/character"]
+[editable path="substages/0/teacher/LeftHand/item"]
+[editable path="substages/0/teacher/RightHand/item"]
+[editable path="substages/0/student"]
+[editable path="substages/0/student/model/character"]
+[editable path="substages/0/student/LeftHand/item"]
+[editable path="substages/0/student/RightHand/item"]

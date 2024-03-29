@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0nj7mbkl3b2c"]
+
+[ext_resource type="PackedScene" uid="uid://bhh6i64qwrk6m" path="res://resources/models/university.blend" id="1_cu00t"]
+[ext_resource type="PackedScene" uid="uid://pdm6wg7slt58" path="res://entities/player/fps_controller/fps_player.tscn" id="2_fm2ca"]
+
+[sub_resource type="Environment" id="Environment_7gldu"]
+background_mode = 1
+background_color = Color(0.109804, 0.160784, 0.180392, 1)
+background_energy_multiplier = 2.61
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.31
+adjustment_brightness = 6.75
+adjustment_contrast = 1.69
+
+[node name="LevelUniversity" type="Node3D"]
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="university" parent="model" instance=ExtResource("1_cu00t")]
+
+[node name="ambient" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambient"]
+environment = SubResource("Environment_7gldu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 0.850187, 0.526481, 0, -0.526481, 0.850187, -514.723, 103.397, 117.335)
+light_energy = 0.182
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="entities" type="Node3D" parent="."]
+
+[node name="FPSController" parent="entities" instance=ExtResource("2_fm2ca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508.781, 28.7118, 157.232)

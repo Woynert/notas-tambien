@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://biircjrbo40ih"]
+
+[ext_resource type="PackedScene" uid="uid://big4vcx7ey317" path="res://resources/models/room.blend" id="1_oqetl"]
+
+[sub_resource type="Environment" id="Environment_vg4t4"]
+background_mode = 1
+background_color = Color(0.109804, 0.160784, 0.180392, 1)
+background_energy_multiplier = 2.61
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.54
+adjustment_brightness = 6.75
+adjustment_contrast = 1.69
+
+[node name="LevelRoom" type="Node3D"]
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="room" parent="model" instance=ExtResource("1_oqetl")]
+
+[node name="ambient" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ambient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 9.568, -2.18)
+light_energy = 0.194
+light_specular = 10.185
+shadow_enabled = true
+omni_range = 12.443
+omni_attenuation = 0.554785
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambient"]
+environment = SubResource("Environment_vg4t4")
+
+[node name="Camera3D" type="Camera3D" parent="ambient"]
+transform = Transform3D(0.698415, 0.335997, -0.631919, 0, 0.882948, 0.469472, 0.715693, -0.327886, 0.616664, -7.24563, 8.19, 2.75486)
+
+[node name="entities" type="Node3D" parent="."]

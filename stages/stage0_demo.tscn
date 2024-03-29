@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbp2v6eblaovy"]
+
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_qvpkb"]
+[ext_resource type="PackedScene" uid="uid://bq0ew6mnh2l8m" path="res://maps/map_class.tscn" id="1_yibsr"]
+[ext_resource type="PackedScene" uid="uid://dw54b28jmplya" path="res://entities/player/player.tscn" id="2_24bpq"]
+[ext_resource type="Script" path="res://stages/substage_animation_player.gd" id="6_ixf76"]
+[ext_resource type="Script" path="res://stages/substage_finish_area.gd" id="8_fux4k"]
+
+[sub_resource type="Animation" id="Animation_e5hw0"]
+resource_name = "main"
+length = 13.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../aniShared/PlayerMainVoice")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 4.94173, -6.43086, 1, 1, 0, 4.94173, -6.43086, 2.3, 1, 0, 4.94173, -4.19808)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 2.3, 1, 0, 0, 0, 1)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(3.2, 1, -0.515023, 1.70405, -3.87295, 6.5, 1, -1.10632, 1.70405, -2.76634, 10.3, 1, -0.515023, 1.70405, -3.87295)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(3.2, 1, 0, 0.0954809, 0, 0.995431, 6.5, 1, 0, 0.877565, 0, 0.479458, 10.3, 1, 0, 0.0954809, 0, 0.995431)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../aniShared/AniCameraSmooth:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../aniShared/AniCameraAbsolute:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0s7gt"]
+_data = {
+"main": SubResource("Animation_e5hw0")
+}
+
+[sub_resource type="TorusMesh" id="TorusMesh_5acvu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0emh"]
+height = 4.51002
+radius = 0.992022
+
+[sub_resource type="Animation" id="Animation_68bi1"]
+resource_name = "main"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -3.14647, 2.11173, -3.11073, 2.1, 1, 4.50951, 2.11173, -4.23449)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../aniShared/AniCameraSmooth")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0.962353, 0, 0.271802, 1.7, 1, 0, -0.6293, 0, 0.777162)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../aniShared/AniCameraSmooth:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rmq0"]
+_data = {
+"main": SubResource("Animation_68bi1")
+}
+
+[node name="Stage0" type="Node3D"]
+script = ExtResource("1_qvpkb")
+substage_list = Array[bool]([false, true, false])
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="LevelClass" parent="map" instance=ExtResource("1_yibsr")]
+
+[node name="aniShared" type="Node3D" parent="."]
+
+[node name="PlayerMainVoice" type="AudioStreamPlayer" parent="aniShared"]
+
+[node name="AniCameraSmooth" type="Camera3D" parent="aniShared"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94173, -6.43086)
+current = true
+
+[node name="AniCameraAbsolute" type="Camera3D" parent="aniShared"]
+transform = Transform3D(0.981767, 0, 0.190089, 0, 1, 0, -0.190089, 0, 0.981767, -0.515023, 1.70405, -3.87295)
+current = true
+
+[node name="substages" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="substages"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="substages/0"]
+libraries = {
+"": SubResource("AnimationLibrary_0s7gt")
+}
+script = ExtResource("6_ixf76")
+substage_index = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.71375, 1.50503, -7.07084)
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.57392, 1.50503, 0.628399)
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="1" type="Node3D" parent="substages"]
+
+[node name="player" parent="substages/1" instance=ExtResource("2_24bpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57337, 1.24364, -0.785666)
+
+[node name="Area3D" type="Area3D" parent="substages/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.296438, 0, -6.59817)
+script = ExtResource("8_fux4k")
+substage_index = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="substages/1/Area3D"]
+shape = SubResource("CylinderShape3D_q0emh")
+
+[node name="2" type="Node3D" parent="substages"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="substages/2"]
+libraries = {
+"": SubResource("AnimationLibrary_8rmq0")
+}
+script = ExtResource("6_ixf76")
+substage_index = 2
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="substages/2"]
+transform = Transform3D(1, 0, 0, 0, 0.999572, 0.0292649, 0, -0.0292649, 0.999572, -4.57392, 1.62134, -0.39835)
+mesh = SubResource("TorusMesh_5acvu")

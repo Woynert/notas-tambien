@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xibe8d3ae0ia"]
+
+[ext_resource type="Script" path="res://entities/items.gd" id="1_owd80"]
+[ext_resource type="PackedScene" uid="uid://flo5ua1e6lfk" path="res://resources/models/items.blend" id="2_w8udk"]
+
+[node name="Item" type="Node3D"]
+script = ExtResource("1_owd80")
+
+[node name="items" parent="." instance=ExtResource("2_w8udk")]

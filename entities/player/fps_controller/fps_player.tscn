@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://pdm6wg7slt58"]
+
+[ext_resource type="Script" path="res://entities/player/fps_controller/fps_player.gd" id="1_71elu"]
+[ext_resource type="Script" path="res://entities/player/fps_controller/fps_controller.gd" id="1_cuxmc"]
+[ext_resource type="PackedScene" uid="uid://b7l52go81yfbk" path="res://entities/player/fps_controller/free_camera.tscn" id="3_3qpba"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_enerj"]
+height = 2.0406
+
+[node name="FPSPlayer" type="Node3D"]
+script = ExtResource("1_71elu")
+
+[node name="FPSController" type="CharacterBody3D" parent="." node_paths=PackedStringArray("head")]
+script = ExtResource("1_cuxmc")
+head = NodePath("FreeCamera_head")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FPSController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03092, 0)
+shape = SubResource("CapsuleShape3D_enerj")
+
+[node name="FreeCamera_head" parent="FPSController" instance=ExtResource("3_3qpba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63934, 0)
+enabled = false

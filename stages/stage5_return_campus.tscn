@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://6iajqhnr30ya"]
+
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_hymor"]
+[ext_resource type="PackedScene" uid="uid://b0nj7mbkl3b2c" path="res://maps/map_university.tscn" id="2_ghq2t"]
+[ext_resource type="Script" path="res://stages/substage_animation_player.gd" id="3_174m0"]
+[ext_resource type="AudioStream" uid="uid://d1u0eghnqsucs" path="res://resources/sfx/misc/wind.ogg" id="3_wirjq"]
+[ext_resource type="AudioStream" uid="uid://dnh2y11ismca7" path="res://resources/sfx/misc/motor.ogg" id="4_v5x3l"]
+[ext_resource type="PackedScene" uid="uid://dbox786kbiclb" path="res://resources/models/bus.blend" id="7_eevvn"]
+
+[sub_resource type="Animation" id="Animation_68bi1"]
+resource_name = "main"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../aniShared/AniCameraAbsolute:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bus2")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -501.822, 0, 172.737, 2.1, 1, -523.806, 0, 150.603)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../aniShared/AniCameraSmooth:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -535.344, 5.18072, 149.191)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, -0.655736, 0, 0.75499)
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../aniShared/PlayerMainVoice")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_v5x3l")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../aniShared/PlayerMainVoice:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rmq0"]
+_data = {
+"main": SubResource("Animation_68bi1")
+}
+
+[sub_resource type="TorusMesh" id="TorusMesh_5acvu"]
+
+[node name="Stage2" type="Node3D"]
+script = ExtResource("1_hymor")
+substage_list = Array[bool]([false])
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="LevelUniversity" parent="map" instance=ExtResource("2_ghq2t")]
+
+[node name="aniShared" type="Node3D" parent="."]
+
+[node name="PlayerSfxBg" type="AudioStreamPlayer" parent="aniShared"]
+stream = ExtResource("3_wirjq")
+autoplay = true
+
+[node name="PlayerMainVoice" type="AudioStreamPlayer" parent="aniShared"]
+volume_db = -80.0
+
+[node name="AniCameraSmooth" type="Camera3D" parent="aniShared"]
+transform = Transform3D(0.486717, 0, -0.87356, 0, 1, 0, 0.87356, 0, 0.486717, -529.234, 2.55933, 141.966)
+
+[node name="AniCameraAbsolute" type="Camera3D" parent="aniShared"]
+transform = Transform3D(0.14002, 0, -0.990149, 0, 1, 0, 0.990149, 0, 0.14002, -535.344, 5.18072, 149.191)
+current = true
+
+[node name="substages" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="substages"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="substages/0"]
+libraries = {
+"": SubResource("AnimationLibrary_8rmq0")
+}
+script = ExtResource("3_174m0")
+substage_index = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, 0.999572, 0.0292649, 0, -0.0292649, 0.999572, -4.57392, 1.62134, -0.39835)
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="bus2" parent="substages/0" instance=ExtResource("7_eevvn")]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -523.806, 0, 150.603)

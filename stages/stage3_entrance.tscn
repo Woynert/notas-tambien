@@ -1,0 +1,260 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8wjonmosmone"]
+
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_agg0i"]
+[ext_resource type="PackedScene" uid="uid://bqo4ugnw0566a" path="res://maps/map_entrance.tscn" id="2_wro2s"]
+[ext_resource type="Script" path="res://stages/substage_animation_player.gd" id="3_3n2pf"]
+[ext_resource type="AudioStream" uid="uid://d1u0eghnqsucs" path="res://resources/sfx/misc/wind.ogg" id="3_vob1j"]
+[ext_resource type="PackedScene" uid="uid://bp4gstuwwwgj0" path="res://entities/person/person.tscn" id="4_7ntap"]
+[ext_resource type="AudioStream" uid="uid://dnh2y11ismca7" path="res://resources/sfx/misc/motor.ogg" id="4_npkqa"]
+[ext_resource type="PackedScene" uid="uid://pdm6wg7slt58" path="res://entities/player/fps_controller/fps_player.tscn" id="5_nafdq"]
+[ext_resource type="Script" path="res://stages/substage_finish_area.gd" id="6_nwb3p"]
+[ext_resource type="PackedScene" uid="uid://dbox786kbiclb" path="res://resources/models/bus.blend" id="7_26g8o"]
+
+[sub_resource type="Animation" id="Animation_68bi1"]
+resource_name = "main"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../aniShared/AniCameraAbsolute:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bus2")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -501.822, 0, 172.737, 1.5, 1, -528.174, -2.10804, 146.239, 1.6, 1, -528.174, -2.10804, 146.239, 3, 1, -528.174, -2.10804, 146.239, 3.1, 1, -528.174, -2.10804, 146.239, 5, 1, -581.733, -6.24826, 93.886)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("student")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -529.095, -1.68821, 143.716, 1.7, 1, -529.095, -1.68821, 143.716, 2.8, 1, -525.329, -1.38026, 140.094)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("student")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0.872172, 0, 0.4892, 1.7, 1, 0, 0.872172, 0, 0.4892, 2.5, 1, 0, 0.872172, 0, 0.4892, 2.8, 1, 0, 0.466749, 0, 0.88439, 3, 1, 0, 0.466749, 0, 0.88439, 3.7, 1, 0, 0.466749, 0, 0.88439, 3.9, 1, 0, 0.466749, 0, 0.88439, 4.3, 1, 0, 0.0737256, 0, 0.997279)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("student")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1.5, 1, 0, 0, 0, 1.6, 1, 1, 1, 1)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../aniShared/AniCameraSmooth:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -528.107, 14.2514, 152.906, 5, 1, -528.207, 14.2514, 152.139)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../aniShared/AniCameraAbsolute")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -0.509785, 0, 0, 0.860302, 5, 1, -0.564499, 0, 0, 0.825434)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("bus2")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.0086631, -0.379268, 0.0211286, 0.925005)
+tracks/9/type = "animation"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("student/LocalAnimationPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": PackedStringArray("idle-breath", "idle-breath"),
+"times": PackedFloat32Array(0, 2.9)
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../aniShared/PlayerMainVoice")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_npkqa")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../../aniShared/PlayerMainVoice:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.6, 3.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rmq0"]
+_data = {
+"main": SubResource("Animation_68bi1")
+}
+
+[sub_resource type="TorusMesh" id="TorusMesh_5acvu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0emh"]
+height = 4.51002
+radius = 0.992022
+
+[node name="Stage3" type="Node3D"]
+script = ExtResource("1_agg0i")
+substage_list = Array[bool]([false, true])
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="LevelEntrance" parent="map" instance=ExtResource("2_wro2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -499.035, 1.22, 207.259)
+
+[node name="aniShared" type="Node3D" parent="."]
+
+[node name="PlayerSfxBg" type="AudioStreamPlayer" parent="aniShared"]
+stream = ExtResource("3_vob1j")
+autoplay = true
+
+[node name="PlayerMainVoice" type="AudioStreamPlayer" parent="aniShared"]
+volume_db = -80.0
+
+[node name="AniCameraSmooth" type="Camera3D" parent="aniShared"]
+transform = Transform3D(0.486717, 0, -0.87356, 0, 1, 0, 0.87356, 0, 0.486717, -529.234, 2.55933, 141.966)
+
+[node name="AniCameraAbsolute" type="Camera3D" parent="aniShared"]
+transform = Transform3D(1, 0, 0, 0, 0.480239, 0.877138, 0, -0.877138, 0.480239, -528.107, 14.2514, 152.906)
+current = true
+
+[node name="substages" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="substages"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="substages/0"]
+libraries = {
+"": SubResource("AnimationLibrary_8rmq0")
+}
+script = ExtResource("3_3n2pf")
+substage_index = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="substages/0"]
+transform = Transform3D(1, 0, 0, 0, 0.999572, 0.0292649, 0, -0.0292649, 0.999572, -4.57392, 1.62134, -0.39835)
+mesh = SubResource("TorusMesh_5acvu")
+
+[node name="student" parent="substages/0" instance=ExtResource("4_7ntap")]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -529.095, -1.68821, 143.716)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="substages/0/student/model/character/char-armature" index="0"]
+bones/1/position = Vector3(0.332119, 0.252045, -0.0603208)
+bones/1/rotation = Quaternion(0.00720407, -0.0438341, 0.9931, -0.108536)
+bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.0743476, 0.0716571, -0.037898)
+bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
+bones/5/position = Vector3(-1.98545e-17, 0.379722, 0.0357667)
+bones/6/position = Vector3(0.374419, 0.519517, -0.118496)
+bones/8/position = Vector3(0.496512, 0.519517, 5.96046e-08)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(1.19466e-09, -0.120992, 0.0021935)
+bones/21/rotation = Quaternion(0.662448, 0.24731, -0.662448, -0.24731)
+bones/22/rotation = Quaternion(-6.3225e-08, -8.53919e-08, 0.256122, 0.966645)
+bones/23/position = Vector3(-0.332119, 0.252045, -0.0603208)
+bones/23/rotation = Quaternion(-0.00720407, -0.0438341, 0.9931, 0.108536)
+bones/24/rotation = Quaternion(0.245352, 0.01113, 0.0500807, 0.968076)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+
+[node name="face-eyes-closed_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.677648, -0.0750298)
+
+[node name="face-eyes-normal_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.08616e-07, 0.677648, 0.0434664)
+
+[node name="face-eyes-ojera_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 0, 0.677648, -0.0750298)
+
+[node name="face-mouth-closed_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 2.38419e-07, 0.677648, -0.0837547)
+
+[node name="face-mouth-happy_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -2.38419e-07, 0.677648, 0.0434664)
+
+[node name="face-mouth-open_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.677648, -0.0837547)
+
+[node name="face-mouth-sad" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, 4.05312e-06, 0.677648, -0.0837547)
+
+[node name="head_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 0.677648, 0.0434665)
+
+[node name="LeftHand" parent="substages/0/student" index="2"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="RightHand" parent="substages/0/student" index="3"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="bus2" parent="substages/0" instance=ExtResource("7_26g8o")]
+transform = Transform3D(0.711419, -0.0325168, -0.702016, 0.0456594, 0.998957, 1.86264e-08, 0.701283, -0.0320536, 0.712161, -501.822, 0, 172.737)
+
+[node name="1" type="Node3D" parent="substages"]
+
+[node name="player" parent="substages/1" instance=ExtResource("5_nafdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -525.891, -1.47116, 141.788)
+initial_camera_angle = 90.0
+max_speed_override = 6.0
+
+[node name="Area3D" type="Area3D" parent="substages/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -462.161, 2.46382, 177.15)
+script = ExtResource("6_nwb3p")
+substage_index = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="substages/1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.197937, 0, -1.68024)
+shape = SubResource("CylinderShape3D_q0emh")
+
+[editable path="substages/0/student"]
+[editable path="substages/0/student/model/character"]
+[editable path="substages/0/student/LeftHand/item"]

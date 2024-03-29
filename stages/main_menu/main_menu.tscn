@@ -1,0 +1,207 @@
+[gd_scene load_steps=8 format=3 uid="uid://wujeup4xntsv"]
+
+[ext_resource type="PackedScene" uid="uid://bp4gstuwwwgj0" path="res://entities/person/person.tscn" id="1_5ceox"]
+[ext_resource type="Script" path="res://stages/main_menu/main_menu.gd" id="1_chp68"]
+[ext_resource type="PackedScene" uid="uid://flo5ua1e6lfk" path="res://resources/models/items.blend" id="1_cwkfv"]
+[ext_resource type="PackedScene" uid="uid://biircjrbo40ih" path="res://maps/map_room.tscn" id="2_aboo8"]
+[ext_resource type="Script" path="res://entities/items.gd" id="2_qbbx3"]
+[ext_resource type="FontFile" uid="uid://b2kf3l64wpewr" path="res://resources/ttf/Roboto-Regular.ttf" id="5_ttb8j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_frlrq"]
+line_spacing = -28.49
+font_size = 76
+font_color = Color(0.811765, 0.870588, 0.278431, 1)
+outline_size = 15
+outline_color = Color(0.909804, 0.498039, 0.164706, 1)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_chp68")
+
+[node name="scene" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="scene"]
+transform = Transform3D(0.242565, -0.2798, 0.92891, -1.37653e-08, 0.957506, 0.288414, -0.970135, -0.0699591, 0.232258, 3.83577, 4.72555, -4.28424)
+fov = 10.2
+
+[node name="ui" type="Node3D" parent="scene/Camera3D"]
+transform = Transform3D(-4.18539e-08, -1.2607e-08, -1, -0.288414, 0.957506, 0, 0.957506, 0.288414, -4.37114e-08, -6.33281, -2.75912, -0.802637)
+visible = false
+
+[node name="items" parent="scene/Camera3D/ui" instance=ExtResource("1_cwkfv")]
+transform = Transform3D(0.213563, 0.0101529, -0.976877, -0.97689, -0.00670405, -0.213635, -0.00871805, 0.999926, 0.00848653, -2.9743, 2.19872, -6.71302)
+script = ExtResource("2_qbbx3")
+item = 1
+
+[node name="Person" parent="scene" instance=ExtResource("1_5ceox")]
+transform = Transform3D(-0.987724, 0, 0.15621, 0, 1, 0, -0.15621, 0, -0.987724, -4.96955, -0.200371, -5.86056)
+left_hand_item = 0
+right_hand_item = 0
+
+[node name="Skeleton3D" parent="scene/Person/model/character/char-armature" index="0"]
+bones/0/position = Vector3(0, 0.451679, 0)
+bones/0/rotation = Quaternion(0.276723, -8.60795e-25, -6.14448e-17, 0.96095)
+bones/1/position = Vector3(0.332119, 0.190541, 0.00526344)
+bones/1/rotation = Quaternion(0.0892472, 0.748036, 0.654683, -0.0621852)
+bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
+bones/4/position = Vector3(0.188557, 0.198833, 0.0252376)
+bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
+bones/4/scale = Vector3(0, 0, 0)
+bones/5/position = Vector3(0.0142004, 0.275986, 0.163537)
+bones/5/rotation = Quaternion(0.127737, -0.504084, -0.376758, 0.766574)
+bones/6/position = Vector3(0.374419, 0.519517, 0.00898498)
+bones/8/position = Vector3(0.496512, 0.519517, -0.123883)
+bones/10/position = Vector3(0.628403, 0.519517, -0.118496)
+bones/12/position = Vector3(0.886532, 0.519517, -0.127221)
+bones/14/position = Vector3(0.963782, 0.519517, 5.96046e-08)
+bones/16/position = Vector3(0.814934, 0.519517, -0.127221)
+bones/18/position = Vector3(1.0335, 0.519517, -0.127221)
+bones/21/position = Vector3(-1.22909e-17, -0.131996, -0.0106449)
+bones/21/rotation = Quaternion(0.655607, 0.10838, -0.747284, -0.000236422)
+bones/22/rotation = Quaternion(-0.416553, -0.18177, 0.167391, 0.874885)
+bones/23/position = Vector3(-0.275679, 0.325618, 0.0382591)
+bones/23/rotation = Quaternion(0.128062, 0.689642, 0.708194, 0.0803432)
+bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+
+[node name="face-eyes-closed_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="0"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.133423, 0.678174, 0.546926)
+
+[node name="face-eyes-normal_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="1"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.248897, 0.689917, 0.48226)
+
+[node name="face-eyes-ojera_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="2"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.244215, 0.689441, 0.484882)
+
+[node name="face-mouth-closed_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="3"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.251798, 0.690212, 0.480635)
+
+[node name="face-mouth-happy_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="4"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.141231, 0.678968, 0.542553)
+
+[node name="face-mouth-open_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="5"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.251798, 0.690212, 0.480635)
+
+[node name="face-mouth-sad" parent="scene/Person/model/character/char-armature/Skeleton3D" index="6"]
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.251799, 0.690208, 0.480636)
+
+[node name="head_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="7"]
+transform = Transform3D(0.207905, 0.448846, -0.869088, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.141231, 0.678967, 0.542553)
+
+[node name="LeftHand" parent="scene/Person" index="2"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.240581, 1.51628, 0.888709)
+
+[node name="RightHand" parent="scene/Person" index="3"]
+transform = Transform3D(-0.826907, 0.0261038, -0.561732, 0.183474, 0.956781, -0.225624, 0.531565, -0.289633, -0.795959, -0.0794468, 1.52775, 0.799674)
+
+[node name="LevelRoom" parent="scene" instance=ExtResource("2_aboo8")]
+
+[node name="room2" parent="scene/LevelRoom/model/room" index="1"]
+visible = false
+
+[node name="chair_002" parent="scene/LevelRoom/model/room" index="3"]
+transform = Transform3D(0.785292, 0, 0, 0, 0.785292, 0, 0, 0, 0.785292, -4.7935, -0.0132005, -6.0031)
+
+[node name="CollisionShape3D" parent="scene/LevelRoom/model/room/wallcol_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ttb8j")
+text = "Notas
+También
+"
+label_settings = SubResource("LabelSettings_frlrq")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/CenterContainer/Label"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = 46.0
+offset_right = -41.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.62959, 2.96)
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/CenterContainer/Label/Control"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.4577
+offset_top = -20.2057
+offset_right = 20.5423
+offset_bottom = 19.7943
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.411682
+color = Color(0, 0, 0, 0.435294)
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="btnPlay" type="Button" parent="Control/MarginContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_ttb8j")
+theme_override_font_sizes/font_size = 22
+text = "Jugar"
+
+[node name="btnQuit" type="Button" parent="Control/MarginContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_ttb8j")
+theme_override_font_sizes/font_size = 22
+text = "Salir"
+
+[editable path="scene/Person"]
+[editable path="scene/Person/model/character"]
+[editable path="scene/Person/LeftHand/item"]
+[editable path="scene/LevelRoom"]
+[editable path="scene/LevelRoom/model/room"]

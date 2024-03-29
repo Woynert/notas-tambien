@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://coom8mvka2yvy"]
+
+[ext_resource type="PackedScene" uid="uid://flo5ua1e6lfk" path="res://resources/models/items.blend" id="1_3cmdi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owt0h"]
+albedo_color = Color(0.121569, 0.176471, 0.196078, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qml6p"]
+material = SubResource("StandardMaterial3D_owt0h")
+
+[node name="icon" type="Node3D"]
+
+[node name="items" parent="." instance=ExtResource("1_3cmdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4863, 0.557925, 0)
+
+[node name="ruler" parent="items" index="0"]
+visible = false
+
+[node name="pencil" parent="items" index="1"]
+transform = Transform3D(0.862134, -0.506681, 0, 0.506681, 0.862134, 0, 0, 0, 1, 0.0101835, -0.0122201, 0)
+
+[node name="exam" parent="items" index="2"]
+transform = Transform3D(0.927406, 0.374056, 0, -0.374056, 0.927406, 0, 0, 0, 1, 0.264721, 0.00977284, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.685975, 0.574948, -0.544212)
+mesh = SubResource("BoxMesh_qml6p")
+
+[editable path="items"]
