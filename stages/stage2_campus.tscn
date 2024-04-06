@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2kttw8f1cx70"]
+[gd_scene load_steps=19 format=3 uid="uid://2kttw8f1cx70"]
 
 [ext_resource type="Script" path="res://stages/stage.gd" id="1_8r506"]
 [ext_resource type="PackedScene" uid="uid://b0nj7mbkl3b2c" path="res://maps/map_university.tscn" id="2_7nkgr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://stages/substage_animation_player.gd" id="6_upti3"]
 [ext_resource type="PackedScene" uid="uid://dbox786kbiclb" path="res://resources/models/bus.blend" id="7_34bbg"]
 [ext_resource type="Script" path="res://stages/substage_finish_area.gd" id="8_ijdks"]
+[ext_resource type="PackedScene" uid="uid://doawo8yvllkp1" path="res://entities/control/compass.tscn" id="8_iobvs"]
 [ext_resource type="AudioStream" uid="uid://dnh2y11ismca7" path="res://resources/sfx/misc/motor.ogg" id="9_s4ikq"]
 
 [sub_resource type="Animation" id="Animation_e5hw0"]
@@ -263,6 +264,23 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 262.17
 left_hand_item = 0
 right_hand_item = 0
 
+[node name="Skeleton3D" parent="substages/0/student/model/character/char-armature" index="0"]
+bones/1/rotation = Quaternion(0.00720407, -0.0438341, 0.993099, -0.108536)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
+bones/4/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.673838, 0.214341, -0.673838, -0.214341)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-4.1609e-08, -9.55231e-08, 0.192118, 0.981372)
+bones/23/rotation = Quaternion(-0.00720407, -0.0438341, 0.993099, 0.108536)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.245352, 0.01113, 0.0500807, 0.968076)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+bones/26/scale = Vector3(1, 1, 1)
+
 [node name="face-eyes-closed_2" parent="substages/0/student/model/character/char-armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.671383, 0.0434663)
 
@@ -288,15 +306,19 @@ transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 0.671383, 0.0434665)
 
 [node name="LeftHand" parent="substages/0/student" index="2"]
-transform = Transform3D(-0.984346, -0.0417384, 0.171235, 0.140311, 0.402379, 0.904657, -0.10666, 0.914521, -0.390224, 0.36005, 0.604469, 0.0238647)
+transform = Transform3D(-0.984345, -0.0417386, 0.171234, 0.14031, 0.402379, 0.904657, -0.10666, 0.91452, -0.390224, 0.36005, 0.604469, 0.0238647)
 
 [node name="RightHand" parent="substages/0/student" index="3"]
-transform = Transform3D(-0.984346, 0.0417384, -0.171235, -0.140311, 0.402379, 0.904657, 0.10666, 0.914521, -0.390224, -0.36005, 0.604469, 0.0238647)
+transform = Transform3D(-0.984345, 0.0417386, -0.171234, -0.14031, 0.402379, 0.904657, 0.10666, 0.91452, -0.390224, -0.36005, 0.604469, 0.0238647)
 
 [node name="ArrowIndicator" parent="substages/0" instance=ExtResource("3_752tu")]
 transform = Transform3D(0.571774, 0, 0, 0, 0.571774, 0, 0, 0, 0.571774, -525.787, 4.36223, 138.662)
 
 [node name="1" type="Node3D" parent="substages"]
+
+[node name="Compass" parent="substages/1" instance=ExtResource("8_iobvs")]
+path_node_meta = NodePath("../Area3D/CollisionShape3D")
+path_node_agent = NodePath("../player")
 
 [node name="player" parent="substages/1" instance=ExtResource("4_h55f1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 262.144, 87.7996, -56.2028)
@@ -332,6 +354,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -524.831, 0.462628, 142.08)
 left_hand_item = 0
 right_hand_item = 0
 
+[node name="Skeleton3D" parent="substages/2/student/model/character/char-armature" index="0"]
+bones/1/rotation = Quaternion(0.00720407, -0.0438341, 0.993099, -0.108536)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
+bones/4/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.673838, 0.214341, -0.673838, -0.214341)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-4.1609e-08, -9.55231e-08, 0.192118, 0.981372)
+bones/23/rotation = Quaternion(-0.00720407, -0.0438341, 0.993099, 0.108536)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.245352, 0.01113, 0.0500807, 0.968076)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
+bones/26/scale = Vector3(1, 1, 1)
+
 [node name="face-eyes-closed_2" parent="substages/2/student/model/character/char-armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-08, -2.79397e-08, -4.47035e-08, 1, -1.78814e-07, 0.671383, 0.0434663)
 
@@ -357,10 +396,10 @@ transform = Transform3D(1, 3.72529e-09, 2.79397e-08, -3.72529e-09, 1, 4.47035e-0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41315e-16, 0.671383, 0.0434665)
 
 [node name="LeftHand" parent="substages/2/student" index="2"]
-transform = Transform3D(-0.984346, -0.0417384, 0.171235, 0.140311, 0.402379, 0.904657, -0.10666, 0.914521, -0.390224, 0.360046, 0.604471, 0.0238495)
+transform = Transform3D(-0.984345, -0.0417386, 0.171234, 0.14031, 0.402379, 0.904657, -0.10666, 0.91452, -0.390224, 0.360046, 0.604471, 0.0238495)
 
 [node name="RightHand" parent="substages/2/student" index="3"]
-transform = Transform3D(-0.984346, 0.0417384, -0.171235, -0.140311, 0.402379, 0.904657, 0.10666, 0.914521, -0.390224, -0.360046, 0.604471, 0.0238495)
+transform = Transform3D(-0.984345, 0.0417386, -0.171234, -0.14031, 0.402379, 0.904657, 0.10666, 0.91452, -0.390224, -0.360046, 0.604471, 0.0238495)
 
 [node name="bus2" parent="substages/2" instance=ExtResource("7_34bbg")]
 transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -501.822, 0, 172.737)

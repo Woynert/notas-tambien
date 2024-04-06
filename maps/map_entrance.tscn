@@ -21,7 +21,7 @@ adjustment_contrast = 1.69
 [node name="ambient" type="Node3D" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="ambient"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2954, 5.33157, -31.7253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5567, 3.39039, -32.7969)
 light_color = Color(0.745098, 0.847059, 1, 1)
 light_energy = 0.077
 light_specular = 10.185
