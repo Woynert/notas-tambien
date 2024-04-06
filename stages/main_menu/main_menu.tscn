@@ -42,11 +42,9 @@ bones/0/position = Vector3(0, 0.451679, 0)
 bones/0/rotation = Quaternion(0.276723, -8.60795e-25, -6.14448e-17, 0.96095)
 bones/1/position = Vector3(0.332119, 0.190541, 0.00526344)
 bones/1/rotation = Quaternion(0.0892472, 0.748036, 0.654683, -0.0621852)
-bones/2/rotation = Quaternion(0.245352, -0.01113, -0.0500807, 0.968076)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.00676414, -0.0322803, -0.0836174, 0.995952)
 bones/4/position = Vector3(0.188557, 0.198833, 0.0252376)
-bones/4/rotation = Quaternion(0.6999, -0.0163294, -0.0648895, 0.7111)
 bones/4/scale = Vector3(0, 0, 0)
 bones/5/position = Vector3(0.0142004, 0.275986, 0.163537)
 bones/5/rotation = Quaternion(0.127737, -0.504084, -0.376758, 0.766574)
@@ -65,7 +63,6 @@ bones/23/rotation = Quaternion(0.128062, 0.689642, 0.708194, 0.0803432)
 bones/24/rotation = Quaternion(0.428471, 0.0433621, 0.0454052, 0.901372)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(0.00676414, 0.0322803, 0.0836174, 0.995952)
-bones/26/rotation = Quaternion(0.6999, 0.0163294, 0.0648895, 0.7111)
 
 [node name="face-eyes-closed_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="0"]
 transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.133423, 0.678174, 0.546926)
@@ -89,13 +86,13 @@ transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0
 transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.251799, 0.690208, 0.480636)
 
 [node name="head_2" parent="scene/Person/model/character/char-armature/Skeleton3D" index="7"]
-transform = Transform3D(0.207905, 0.448846, -0.869088, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.141231, 0.678967, 0.542553)
+transform = Transform3D(0.207905, 0.448846, -0.869087, -0.958049, 0.272635, -0.0883829, 0.197273, 0.851004, 0.486698, 0.141231, 0.678967, 0.542553)
 
 [node name="LeftHand" parent="scene/Person" index="2"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.240581, 1.51628, 0.888709)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.240581, 0.517986, 0.858136)
 
 [node name="RightHand" parent="scene/Person" index="3"]
-transform = Transform3D(-0.826907, 0.0261038, -0.561732, 0.183474, 0.956781, -0.225624, 0.531565, -0.289633, -0.795959, -0.0794468, 1.52775, 0.799674)
+transform = Transform3D(-0.826907, 0.0261039, -0.561732, 0.183474, 0.956782, -0.225624, 0.531565, -0.289633, -0.795959, -0.0794477, 0.529451, 0.769101)
 
 [node name="LevelRoom" parent="scene" instance=ExtResource("2_aboo8")]
 
@@ -104,9 +101,6 @@ visible = false
 
 [node name="chair_002" parent="scene/LevelRoom/model/room" index="3"]
 transform = Transform3D(0.785292, 0, 0, 0, 0.785292, 0, 0, 0, 0.785292, -4.7935, -0.0132005, -6.0031)
-
-[node name="CollisionShape3D" parent="scene/LevelRoom/model/room/wallcol_002" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
