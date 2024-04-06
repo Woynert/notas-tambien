@@ -1,4 +1,5 @@
 extends Playable
+class_name FPSPlayer
 
 @onready var body: CharacterBody3D = $FPSController
 @export_range(-360, 360) var initial_camera_angle: float = 0.0
