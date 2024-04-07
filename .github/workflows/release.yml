@@ -1,0 +1,62 @@
+name: release
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: nix init
+        run: nix-shell --run true
+
+      - name: bump version
+        id: bump
+        run: |
+          TAG=v$(nix-shell --run 'convco version --bump')
+          echo "tag=$TAG" | tee -a "$GITHUB_OUTPUT"
+
+      - name: get godot version
+        id: godot
+        run: |
+          VERSION=$(nix-shell --run 'echo $GODOT_VERSION')
+          echo "version=$VERSION" | tee -a "$GITHUB_OUTPUT"
+
+      - name: cache export templates
+        uses: actions/cache@v4
+        with:
+          key: ${{ steps.godot.outputs.version }}
+          path: ~/.local/share/godot/export_templates
+
+      - name: setup godot config
+        run: nix-shell --pure --run \
+          'setup-export-templates && setup-editor-config'
+
+      - name: import assets
+        run: nix-shell --pure --run \
+          'godot-import-assets'
+
+      - name: linux build
+        run: nix-shell --pure --run \
+          'godot-build-linux "${{ steps.bump.outputs.tag }}"'
+
+      - name: windows build
+        run: nix-shell --pure --run \
+          'godot-build-windows "${{ steps.bump.outputs.tag }}"'
+
+      - name: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.bump.outputs.tag }}"
+          gh release create "$TAG" -t "Release $TAG" ./export/*/*.zip
