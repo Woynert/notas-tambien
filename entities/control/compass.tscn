@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://doawo8yvllkp1"]
+
+[ext_resource type="Script" path="res://entities/control/compass.gd" id="1_72r01"]
+[ext_resource type="Texture2D" uid="uid://breb0n0f6fk5a" path="res://resources/models/compass/compass-body.png" id="2_dg7r6"]
+[ext_resource type="Texture2D" uid="uid://dfjx18vo5sq5" path="res://resources/models/compass/compass-hand.png" id="3_tvpx1"]
+
+[node name="Compass" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_72r01")
+
+[node name="visual" type="Control" parent="."]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -137.0
+offset_top = 37.0
+offset_right = -37.0
+offset_bottom = 137.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="body" type="TextureRect" parent="visual"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dg7r6")
+expand_mode = 2
+
+[node name="hand" type="TextureRect" parent="visual"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 60)
+texture = ExtResource("3_tvpx1")
+expand_mode = 2

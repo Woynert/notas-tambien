@@ -414,7 +414,6 @@ substage_list = Array[bool]([false, true, true, false, true, false, false, true]
 [node name="PlayerMainVoice" type="AudioStreamPlayer" parent="aniShared"]
 
 [node name="AniCameraSmooth" type="Camera3D" parent="aniShared"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AniCameraAbsolute" type="Camera3D" parent="aniShared"]
 transform = Transform3D(-0.757576, -0.358982, 0.54517, -2.23517e-07, 0.835194, 0.549956, -0.652747, 0.416633, -0.632723, 1.48838, 6.36467, -7.32073)

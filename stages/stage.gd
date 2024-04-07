@@ -7,14 +7,17 @@ var current_substage_node: Node3D = null
 
 
 func _ready():
-	_disable_recursive_except_me()
+	_disable_all_stages()
 
 
-func _disable_recursive_except_me():
-	for child in substages_root.get_children():
-		_disable_recursive(child)
-		if child is Node3D: child.visible = false
-		if child.get_child(0) is Control: child.get_child(0).visible = false
+func _disable_all_stages():
+	for stage in substages_root.get_children():
+		_disable_recursive(stage)
+		if stage is Node3D: stage.visible = false
+		
+		# hide top level control nodes
+		for child in stage.get_children():
+			if child is Control: child.visible = false
 
 
 func _disable_recursive(node: Node):
@@ -22,6 +25,15 @@ func _disable_recursive(node: Node):
 	node.set_physics_process(false)
 	for child in node.get_children():
 		_disable_recursive(child)
+
+
+func _enable_stage(stage: Node):
+	# show top level control nodes
+	for child in stage.get_children():
+		if child is Control: child.visible = true
+	
+	stage.visible = true
+	_enable_recursive(current_substage_node)
 
 
 func _enable_recursive(node: Node):
@@ -41,7 +53,7 @@ func play_substage(substage_index: int) -> int:
 		var playable = current_substage_node.get_node_or_null("player") as Playable
 		if playable: # only if is_gameplay
 			playable.end()
-	_disable_recursive_except_me()
+	_disable_all_stages()
 	
 	# start requested substage
 	if substage_index >= substage_list.size():
@@ -51,9 +63,7 @@ func play_substage(substage_index: int) -> int:
 	if !current_substage_node:
 		return 2
 	
-	current_substage_node.visible = true
-	if current_substage_node.get_child(0) is Control: current_substage_node.get_child(0).visible = true
-	_enable_recursive(current_substage_node)
+	_enable_stage(current_substage_node)
 	
 	# true  -> gameplay
 	# false -> animation
@@ -83,7 +93,7 @@ func properly_end_substage(substage_index: int) -> int:
 	if !substage:
 		return 2
 	
-	_disable_recursive_except_me()
+	_disable_all_stages()
 	substage.visible = true
 	_enable_recursive(substage)
 	
@@ -103,5 +113,5 @@ func properly_end_substage(substage_index: int) -> int:
 		if !ani_player.has_animation("main"):
 			return 5
 		ani_player.play("main")
-
+	
 	return 0
